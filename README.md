@@ -85,6 +85,7 @@ interactive HTMLs (which the user can share with others).
     * Otherwise, it returns a Pandas dataframe containing the mode of the specified list of columns.
 
 ### Spread
+
 * **`calculate_max_and_min`:** This function calculates the maximum and minimum value of all *numeric* columns within a Pandas dataframe. Alternately, users can specify a list of columns for which they would want to calculate the maximum and minimum value. If the list contains non-numeric columns, then the function displays exceptions to the column names.
   * Parameters:
     * **`dataframe`:** Pandas dataframe.
@@ -135,7 +136,20 @@ interactive HTMLs (which the user can share with others).
   * Returns:
     * If no arguments are specified, the function returns a Pandas dataframe containing the z-score of all numeric columns
     * Otherwise, it returns a Pandas dataframe containing the z-score of the specified list of columns.
+
 ### Plots
+
+* **`histogram`:** This function generates an interactive histogram in HTML based on a dataframe and saves the plot in the same
+    folder as the codes.
+* Parameters:
+  * **`dataframe`:** Pandas dataframe.
+  * **`xaxis`:** the column of the Pandas dataframe for which you want the histogram.
+  * **`bins`**: number of bins in the histogram.
+  * **`title`**: title of the histogram.
+  * **`xlabel`**: label of the x-axis of the histogram.
+  * **`to_html`**: DEFAULT: True. Saves the interactive plot in a .html format within the export/html folder.
+* Returns:
+  * Figure.
 
 ### Export
 
