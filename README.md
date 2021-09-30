@@ -85,6 +85,19 @@ interactive HTMLs (which the user can share with others).
     * Otherwise, it returns a Pandas dataframe containing the mode of the specified list of columns.
 
 ### Spread
+* **`calculate_max_and_min`:** This function calculates the maximum and minimum value of all *numeric* columns within a Pandas dataframe. Alternately, users can specify a list of columns for which they would want to calculate the maximum and minimum value. If the list contains non-numeric columns, then the function displays exceptions to the column names.
+  * Parameters:
+    * **`dataframe`:** Pandas dataframe.
+    * **`args`:** list of column names for which users would like to calculate the maximum and minimum value. Without
+      arguments, Python will calculate maximum and minimum value of all numeric columns of the dataframe by default.
+    * **`display`:** DEFAULT: True. If display is True, then the function
+      displays the resulting dataframe, else it just returns the resulting dataframe.
+    * **`to_csv`:** DEFAULT: False. Saves the dataframe in a .csv format within the export/csv folder.
+    * **`to_html`:** DEFAULT: False. Saves the dataframe in a .html format within the export/html folder.
+  * Returns:
+    * If no arguments are specified, the function returns a Pandas dataframe containing the maximum and minimum
+    value of all numeric columns
+    * Otherwise, it returns a Pandas dataframe containing the maximum and minimum value of the specified list of columns.
 
 ### Plots
 
