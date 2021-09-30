@@ -188,6 +188,16 @@ interactive HTMLs (which the user can share with others).
 
 ### Export
 
+* **`run_html`:** This function publishes the interactive report on the browser. This function also saves an interactive HTML file in the export directory, which is created by the function in the same directory as the user-created Python module running the function.
+
+  * Example:
+
+```
+    from EDA import run_html
+    run_html.run_html()
+
+```
+
 ## License
 
 Copyright 2021 Department for Business, Energy and Industrial Strategy
