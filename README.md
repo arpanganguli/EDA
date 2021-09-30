@@ -25,6 +25,47 @@ interactive HTMLs (which the user can share with others).
   `from EDA import <subpackage>`. E.g. if you want to import `central_tendency`, you can type in
   `from EDA import central_tendency`.
 
+### Generic functions
+
+These functions provide auxiliary support to main functions.
+
+* **`list_files`:** This functions lists all the files in a directory in a tree-like structure.
+
+  * Parameters:
+    * **`start_path`:** The top-level directory for which you want the tree-like structure.
+  * Returns:
+    * Tree-like structure of the entire directory.
+
+* **`create_directory`:** This function first checks if a directory exists, and creates the directory if it does not exist.
+
+  * Parameters:
+    * **`dir_name`:** Name of the directory.
+  Returns:
+    * Directory.
+
+* **`import_csv`:** This function imports csv files. This is an interim function for the purpose of development. It will be deprecated
+    once the package is pushed into production.
+  * Parameters:
+    * **`filepath`:** path of the csv file to import.
+  * Returns:
+    * Reads the csv into a Pandas dataframe.
+
+* **`import_sql`:** This function connects to the SQL Server and reads a table into a Pandas dataframe. :param query_string: the SQL
+    query to fetch relevant data. This is an interim function for the purpose of development. It will be deprecated
+    once the package is pushed into production.
+  * **`query_string`:** SQL
+  * **`server`:** the server in which contains the database.
+  * **`database`:** the database in which contains the table.
+
+* **`clear_all`:** This function clears all files in the html and csv directories. Operationally, it deletes the html and csv directories and then recreates them. This function should be run before running all other functions.
+  * Clears `export/html` and `export/csv` directories, which the package creates in the same directory as the user created Python module.
+
+* **`if_columns:`** This function suffixes `_columns` to a dataframe (when saving it as a file) if columns are specified and
+    suffixes `_dataframe` no columns are specified (i.e. when the user wants to do EDA of the entire dataset).
+
+* if_to_csv: This function saves the resultant dataframe to the csv directory if the to_csv parameter within standard or custom
+    functions is set to `True`.
+
 ### Metadata
 
 * **`describe_dataframe`:** This function publishes descriptive statistics of different columns of a dataframe.
@@ -36,18 +77,16 @@ interactive HTMLs (which the user can share with others).
 ### Central Tendency
 
 * **`calculate_mean`:** This function calculates the mean of all *numeric* columns within a Pandas dataframe.
-  Alternately, users can specify a list of columns for which they would want to calculate
-  the mean. If the list contains non-numeric columns, then the function displays exceptions
-  to the column names.
+  Alternately, users can specify a list of columns for which they would want to calculate the mean. If the list contains non-numeric columns, then the function displays exceptions to the column names.
 
   * Parameters:
     * **`dataframe`:** Pandas dataframe.
-    * **`args`:** list of column names for which users would like to calculate the mean. Without arguments, Python will
+    * **`args`:** List of column names for which users would like to calculate the mean. Without arguments, Python will
       calculate mean of all numeric columns of the dataframe by default.
-    * **`display`:** DEFAULT: True. If display is True, then the function displays the resulting dataframe, else it just
+    * **`display`:** DEFAULT: `True`. If display is True, then the function displays the resulting dataframe, else it just
       returns the resulting dataframe.
-    * **`to_csv`:** DEFAULT: False. Saves the dataframe in a .csv format within the export/csv folder.
-    * **`to_html`:** DEFAULT: False. Saves the dataframe in a .html format within the export/html folder.
+    * **`to_csv`:** DEFAULT: `False`. Saves the dataframe in a .csv format within the export/csv folder.
+    * **`to_html`:** DEFAULT: `False`. Saves the dataframe in a .html format within the export/html folder.
   * Returns:
     * If no arguments are specified, the function returns a Pandas dataframe containing the mean of all numeric
       columns;
@@ -59,12 +98,12 @@ interactive HTMLs (which the user can share with others).
 
   * Parameters:
     * **`dataframe`:** Pandas dataframe.
-    * **`args`:** list of column names for which users would like to calculate the median. Without arguments, Python will
+    * **`args`:** List of column names for which users would like to calculate the median. Without arguments, Python will
       calculate median of all numeric columns of the dataframe by default.
-    * **`display`:** DEFAULT: True. If display is True, then the function displays the resulting dataframe, else it just
+    * **`display`:** DEFAULT: `True`. If display is True, then the function displays the resulting dataframe, else it just
       returns the resulting dataframe.
-    * **`to_csv`:** DEFAULT: False. Saves the dataframe in a .csv format within the export/csv folder.
-    * **`to_html`:** DEFAULT: False. Saves the dataframe in a .html format within the export/html folder.
+    * **`to_csv`:** DEFAULT: `False`. Saves the dataframe in a .csv format within the export/csv folder.
+    * **`to_html`:** DEFAULT: `False`. Saves the dataframe in a .html format within the export/html folder.
   * Returns:
     * If no arguments are specified, the function returns a Pandas dataframe containing the median of all numeric
       columns
@@ -74,12 +113,12 @@ interactive HTMLs (which the user can share with others).
 
   * Parameters:
     * **`dataframe`:** Pandas dataframe.
-    * **`args`:** list of column names for which users would like to calculate the mode. Without arguments, Python will
+    * **`args`:** List of column names for which users would like to calculate the mode. Without arguments, Python will
       calculate the mode of all columns of the dataframe by default.
-    * **`display`:** DEFAULT: True. If display is True, then the function displays the resulting dataframe, else it just
+    * **`display`:** DEFAULT: `True`. If display is True, then the function displays the resulting dataframe, else it just
       returns the resulting dataframe.
-    * **`to_csv`:** DEFAULT: False. Saves the dataframe in a .csv format within the export/csv folder.
-    * **`to_html`:** DEFAULT: False. Saves the dataframe in a .html format within the export/html folder.
+    * **`to_csv`:** DEFAULT: `False`. Saves the dataframe in a .csv format within the export/csv folder.
+    * **`to_html`:** DEFAULT: `False`. Saves the dataframe in a .html format within the export/html folder.
   * Returns:
     * If no arguments are specified, the function returns a Pandas dataframe containing the mode of all columns
     * Otherwise, it returns a Pandas dataframe containing the mode of the specified list of columns.
@@ -89,12 +128,12 @@ interactive HTMLs (which the user can share with others).
 * **`calculate_max_and_min`:** This function calculates the maximum and minimum value of all *numeric* columns within a Pandas dataframe. Alternately, users can specify a list of columns for which they would want to calculate the maximum and minimum value. If the list contains non-numeric columns, then the function displays exceptions to the column names.
   * Parameters:
     * **`dataframe`:** Pandas dataframe.
-    * **`args`:** list of column names for which users would like to calculate the maximum and minimum value. Without
+    * **`args`:** List of column names for which users would like to calculate the maximum and minimum value. Without
       arguments, Python will calculate maximum and minimum value of all numeric columns of the dataframe by default.
-    * **`display`:** DEFAULT: True. If display is True, then the function
+    * **`display`:** DEFAULT: `True`. If display is True, then the function
       displays the resulting dataframe, else it just returns the resulting dataframe.
-    * **`to_csv`:** DEFAULT: False. Saves the dataframe in a .csv format within the export/csv folder.
-    * **`to_html`:** DEFAULT: False. Saves the dataframe in a .html format within the export/html folder.
+    * **`to_csv`:** DEFAULT: `False`. Saves the dataframe in a .csv format within the export/csv folder.
+    * **`to_html`:** DEFAULT: `False`. Saves the dataframe in a .html format within the export/html folder.
   * Returns:
     * If no arguments are specified, the function returns a Pandas dataframe containing the maximum and minimum
     value of all numeric columns
@@ -102,13 +141,13 @@ interactive HTMLs (which the user can share with others).
 * **`calculate_std_and_var`:** This function calculates the standard deviation and variance of all *numeric* columns within a Pandas dataframe. Alternately, users can specify a list of columns for which they would want to calculate the standard deviation and variance. If the list contains non-numeric columns, then the function displays exceptions to the column names.
   * Parameters:
     * **`dataframe`:** Pandas dataframe.
-    * **`args`:** list of column names for which users would like to calculate the standard deviation and variance.
+    * **`args`:** List of column names for which users would like to calculate the standard deviation and variance.
     Without arguments, Python will calculate standard deviation and variance of all numeric columns of the dataframe
     by default.
-    * **`display`:** DEFAULT: True. If display is True, then the function displays the resulting dataframe, else it just
+    * **`display`:** DEFAULT: `True`. If display is True, then the function displays the resulting dataframe, else it just
     returns the resulting dataframe.
-    * **`to_csv`:** DEFAULT: False. Saves the dataframe in a .csv format within the export/csv folder.
-    * **`to_html`:** DEFAULT: False. Saves the dataframe in a .html format within the export/html folder.
+    * **`to_csv`:** DEFAULT: `False`. Saves the dataframe in a .csv format within the export/csv folder.
+    * **`to_html`:** DEFAULT: `False`. Saves the dataframe in a .html format within the export/html folder.
   * Returns:
     * If no arguments are specified, the function returns a Pandas dataframe containing the standard deviation
     and variance of all numeric columns
@@ -116,23 +155,23 @@ interactive HTMLs (which the user can share with others).
 * **`calculate_iqr`:** This function calculates the interquartile range of all *numeric* columns within a Pandas dataframe. Alternately, users can specify a list of columns for which they would want to calculate the interquartile range. If the list contains non-numeric columns, then the function displays exceptions to the column names.
   * Parameters:
     * **`dataframe`:** Pandas dataframe.
-    * **`args`:** list of column names for which users would like to calculate the interquartile range. Without arguments, Python will calculate the interquartile range of all numeric columns of the dataframe
+    * **`args`:** List of column names for which users would like to calculate the interquartile range. Without arguments, Python will calculate the interquartile range of all numeric columns of the dataframe
       by default.
-    * **`display`:** DEFAULT: True. If display is True, then the function displays the resulting dataframe, else it just
+    * **`display`:** DEFAULT: `True`. If display is True, then the function displays the resulting dataframe, else it just
       returns the resulting dataframe.
-    * **`to_csv`:** DEFAULT: False. Saves the dataframe in a .csv format within the export/csv folder.
-    * **`to_html`:** DEFAULT: False. Saves the dataframe in a .html format within the export/html folder.
+    * **`to_csv`:** DEFAULT: `False`. Saves the dataframe in a .csv format within the export/csv folder.
+    * **`to_html`:** DEFAULT: `False`. Saves the dataframe in a .html format within the export/html folder.
   * Returns:
     * If no arguments are specified, the function returns a Pandas dataframe containing the interquartile range of all numeric columns
     * Otherwise, it returns a Pandas dataframe containing the interquartile range of the specified list of columns.
 * **`calculate_zscore`:** This function calculates the z-score of all *numeric* columns within a Pandas dataframe. Alternately, users can specify a list of columns for which they would want to calculate the z-score. If the list contains non-numeric columns, then the function displays exceptions to the column names.
   * Parameters:
     * **`dataframe`:** Pandas dataframe.
-    * **`args`:** list of column names for which users would like to calculate the z-score. Without arguments, Python will calculate the z-score of all numeric columns of the dataframe by default.
-    * **`ddof`:** DEFAULT: 0. Degrees of freedom.
-    * **`display`:** DEFAULT: True. If display is True, then the function displays the resulting dataframe, else it just returns the resulting dataframe.
-    * **`to_csv`:** DEFAULT: False. Saves the dataframe in a .csv format within the export/csv folder.
-    * **`to_html`:** DEFAULT: False. Saves the dataframe in a .html format within the export/html folder.
+    * **`args`:** List of column names for which users would like to calculate the z-score. Without arguments, Python will calculate the z-score of all numeric columns of the dataframe by default.
+    * **`ddof`:** DEFAULT: `0`. Degrees of freedom.
+    * **`display`:** DEFAULT: `True`. If display is True, then the function displays the resulting dataframe, else it just returns the resulting dataframe.
+    * **`to_csv`:** DEFAULT: `False`. Saves the dataframe in a .csv format within the export/csv folder.
+    * **`to_html`:** DEFAULT: `False`. Saves the dataframe in a .html format within the export/html folder.
   * Returns:
     * If no arguments are specified, the function returns a Pandas dataframe containing the z-score of all numeric columns
     * Otherwise, it returns a Pandas dataframe containing the z-score of the specified list of columns.
@@ -144,45 +183,45 @@ interactive HTMLs (which the user can share with others).
 * Parameters:
   * **`dataframe`:** Pandas dataframe.
   * **`xaxis`:** the column of the Pandas dataframe for which you want the histogram.
-  * **`bins`**: number of bins in the histogram.
-  * **`title`**: title of the histogram.
-  * **`xlabel`**: label of the x-axis of the histogram.
-  * **`to_html`**: DEFAULT: True. Saves the interactive plot in a .html format within the export/html folder.
+  * **`bins`**: Number of bins in the histogram.
+  * **`title`**: Title of the histogram.
+  * **`xlabel`**: Label of the x-axis of the histogram.
+  * **`to_html`**: DEFAULT: `True`. Saves the interactive plot in a .html format within the export/html folder.
 * Returns:
   * Figure.
 
 * **`lineplot`:** This function generates an interactive line plot in HTML based on a dataframe.
   * Parameters:
     * **`dataframe`:** Pandas dataframe.
-    * **`xaxis`:** the column of the Pandas dataframe for which you want the line plot's x-axis.
-    * **`yaxis`:** the column of the Pandas dataframe for which you want the line plot's y-axis.
-    * **`title`:** title of the line plot.
-    * **`xlabel`:** label of the x-axis of the line plot.
-    * **`ylabel`:** label of the y-axis of the line plot.
-    * **`to_html`:** DEFAULT: True. Saves the interactive plot in a .html format within the export/html folder.
-    * **`hover_text`:** text to display when the user hovers over specific datapoints on the plot.
+    * **`xaxis`:** The column of the Pandas dataframe for which you want the line plot's x-axis.
+    * **`yaxis`:** The column of the Pandas dataframe for which you want the line plot's y-axis.
+    * **`title`:** Title of the line plot.
+    * **`xlabel`:** Label of the x-axis of the line plot.
+    * **`ylabel`:** Label of the y-axis of the line plot.
+    * **`to_html`:** DEFAULT: `True`. Saves the interactive plot in a .html format within the export/html folder.
+    * **`hover_text`:** Text to display when the user hovers over specific datapoints on the plot.
   * Returns:
     * Figure.
 
 * **`barplot`:** This function generates an interactive barplot plot in HTML based on a dataframe.
   * Parameters:
     * **`dataframe`:** Pandas dataframe.
-    * **`xaxis`:** the column of the Pandas dataframe for which you want the bar plot's x-axis.
-    * **`yaxis`:** the column of the Pandas dataframe for which you want the bar plot's y-axis.
-    * **`title`:** title of the bar plot.
-    * **`xlabel`:** label of the x-axis of the bar plot.
-    * **`ylabel`:** label of the y-axis of the bar plot.
-    * **`to_html`:** DEFAULT: True. Saves the interactive plot in a .html format within the export/html folder.
-    * **`hover_text`:** text to display when the user hovers over specific datapoints on the plot.
-    * **`barmode`:** DEFAULT: stack. The type of barplot the user requires. The user can choose between two options - '`stack`' and '`group`'.
+    * **`xaxis`:** The column of the Pandas dataframe for which you want the bar plot's x-axis.
+    * **`yaxis`:** The column of the Pandas dataframe for which you want the bar plot's y-axis.
+    * **`title`:** Title of the bar plot.
+    * **`xlabel`:** Label of the x-axis of the bar plot.
+    * **`ylabel`:** Label of the y-axis of the bar plot.
+    * **`to_html`:** DEFAULT: `True`. Saves the interactive plot in a .html format within the export/html folder.
+    * **`hover_text`:** Text to display when the user hovers over specific datapoints on the plot.
+    * **`barmode`:** DEFAULT: `stack`. The type of barplot the user requires. The user can choose between two options - '`stack`' and '`group`'.
   * Returns:
     * Figure.
 
 * **`boxplot`:** This function generates an interactive box plot in HTML based on a dataframe.
   * Parameters:
     **`dataframe`:** Pandas dataframe.
-    **`title`:** title of the box plot.
-    **`to_html`:** DEFAULT: True. Saves the interactive plot in a .html format within the export/html folder.
+    **`title`:** Title of the box plot.
+    **`to_html`:** DEFAULT: `True`. Saves the interactive plot in a .html format within the export/html folder.
   * Returns:
     * Figure.
 
@@ -190,12 +229,7 @@ interactive HTMLs (which the user can share with others).
 
 * **`run_html`:** This function publishes the interactive report on the browser. This function also saves an interactive HTML file in the export directory, which is created by the function in the same directory as the user-createdPython module running the function.
 
-  * Example:
-
-```
-    from EDA import run_html
-    run_html.run_html()
-```
+### Example
 
 ## License
 
