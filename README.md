@@ -1,5 +1,6 @@
 # Exploratory Data Analysis (EDA)
-## 
+
+**`Current version: 0.1`**
 
 ## Introduction
 
