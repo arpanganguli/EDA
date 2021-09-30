@@ -10,17 +10,8 @@ may lie. This will also help users avoid writing duplicate code to solve equival
 
 There are a few steps required to install the package. These are as follows -
 
-* Clone this repository to your P: Drive - `git clone git@GITLAB:gangulia/exploratory-data-analysis.git`.
-* Open the repository within PyCharm.
-* Go to the exact location of this repository within your P: Drive through the Terminal within PyCharm.
-  You can do so by typing `cd <location of the repository>`.
-* Go to the distribution folder within the repository by typing `cd dist` in the Terminal.
-* Now type `pip install EDA-0.1-py3-none-any.whl`. This will install the Python package within your S: Drive at
-  `S:\Python\Python39\site-packages`.
-  * You can check if the package has correctly installed by checking for folders named `EDA` and `EDA-0.1.dist-info`
-    within `S:\Python\Python39\site-packages`.
-  * Furthermore, you can check if the package has correctly installed by just type `import EDA` into a new Python
-    module.
+* Type in the command: `pip install git+https://github.com/arpanganguli/EDA.git#egg=EDA`.
+* You can check if the package has correctly installed by just type `import EDA` into a new Python module.
 
 ## Usage
 
