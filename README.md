@@ -164,7 +164,7 @@ interactive HTMLs (which the user can share with others).
   * Returns:
     * Figure.
 
-* barplot: This function generates an interactive barplot plot in HTML based on a dataframe.
+* **`barplot`:** This function generates an interactive barplot plot in HTML based on a dataframe.
   * Parameters:
     * **`dataframe`:** Pandas dataframe.
     * **`xaxis`:** the column of the Pandas dataframe for which you want the bar plot's x-axis.
@@ -178,7 +178,7 @@ interactive HTMLs (which the user can share with others).
   * Returns:
     * Figure.
 
-* boxplot: This function generates an interactive box plot in HTML based on a dataframe.
+* **`boxplot`:** This function generates an interactive box plot in HTML based on a dataframe.
   * Parameters:
     **`dataframe`:** Pandas dataframe.
     **`title`:** title of the box plot.
@@ -188,7 +188,7 @@ interactive HTMLs (which the user can share with others).
 
 ### Export
 
-* **`run_html`:** This function publishes the interactive report on the browser. This function also saves an interactive HTML file in the export directory, which is created by the function in the same directory as the user-created Python module running the function.
+* **`run_html`:** This function publishes the interactive report on the browser. This function also saves an interactive HTML file in the export directory, which is created by the function in the same directory as the user-createdPython module running the function.
 
   * Example:
 
