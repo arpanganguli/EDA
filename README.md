@@ -35,7 +35,7 @@ interactive HTMLs (which the user can share with others).
 
 ### Central Tendency
 
-* **`calculate_mean:`** This function calculates the mean of all *numeric* columns within a Pandas dataframe.
+* **`calculate_mean`:** This function calculates the mean of all *numeric* columns within a Pandas dataframe.
   Alternately, users can specify a list of columns for which they would want to calculate
   the mean. If the list contains non-numeric columns, then the function displays exceptions
   to the column names.
@@ -69,7 +69,7 @@ interactive HTMLs (which the user can share with others).
     * If no arguments are specified, the function returns a Pandas dataframe containing the median of all numeric
       columns
     * Otherwise, it returns a Pandas dataframe containing the median of the specified list of columns.
-* **`calculate_mode `:** This function calculates the mode of all columns within a Pandas dataframe. Alternately, users can
+* **`calculate_mode`:** This function calculates the mode of all columns within a Pandas dataframe. Alternately, users can
   specify a list of columns for which they would want to calculate the median.
 
   * Parameters:
