@@ -151,6 +151,41 @@ interactive HTMLs (which the user can share with others).
 * Returns:
   * Figure.
 
+* **`lineplot`:** This function generates an interactive line plot in HTML based on a dataframe.
+  * Parameters:
+    * **`dataframe`:** Pandas dataframe.
+    * **`xaxis`:** the column of the Pandas dataframe for which you want the line plot's x-axis.
+    * **`yaxis`:** the column of the Pandas dataframe for which you want the line plot's y-axis.
+    * **`title`:** title of the line plot.
+    * **`xlabel`:** label of the x-axis of the line plot.
+    * **`ylabel`:** label of the y-axis of the line plot.
+    * **`to_html`:** DEFAULT: True. Saves the interactive plot in a .html format within the export/html folder.
+    * **`hover_text`:** text to display when the user hovers over specific datapoints on the plot.
+  * Returns:
+    * Figure.
+
+* barplot: This function generates an interactive barplot plot in HTML based on a dataframe.
+  * Parameters:
+    * **`dataframe`:** Pandas dataframe.
+    * **`xaxis`:** the column of the Pandas dataframe for which you want the bar plot's x-axis.
+    * **`yaxis`:** the column of the Pandas dataframe for which you want the bar plot's y-axis.
+    * **`title`:** title of the bar plot.
+    * **`xlabel`:** label of the x-axis of the bar plot.
+    * **`ylabel`:** label of the y-axis of the bar plot.
+    * **`to_html`:** DEFAULT: True. Saves the interactive plot in a .html format within the export/html folder.
+    * **`hover_text`:** text to display when the user hovers over specific datapoints on the plot.
+    * **`barmode`:** DEFAULT: stack. The type of barplot the user requires. The user can choose between two options - '`stack`' and '`group`'.
+  * Returns:
+    * Figure.
+
+* boxplot: This function generates an interactive box plot in HTML based on a dataframe.
+  * Parameters:
+    **`dataframe`:** Pandas dataframe.
+    **`title`:** title of the box plot.
+    **`to_html`:** DEFAULT: True. Saves the interactive plot in a .html format within the export/html folder.
+  * Returns:
+    * Figure.
+
 ### Export
 
 ## License
