@@ -195,7 +195,6 @@ interactive HTMLs (which the user can share with others).
 ```
     from EDA import run_html
     run_html.run_html()
-
 ```
 
 ## License
