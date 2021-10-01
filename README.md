@@ -42,7 +42,7 @@ These functions provide auxiliary support to main functions.
 
   * Parameters:
     * **`dir_name`:** Name of the directory.
-  Returns:
+  * Returns:
     * Directory.
 
 * **`import_csv`:** This function imports csv files. This is an interim function for the purpose of development. It will be deprecated
