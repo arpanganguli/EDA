@@ -231,8 +231,6 @@ These functions provide auxiliary support to main functions.
 
 * **`run_html`:** This function publishes the interactive report on the browser. This function also saves an interactive HTML file in the export directory, which is created by the function in the same directory as the user-createdPython module running the function.
 
-## Example
-
 ## License
 
 Copyright 2021 Arpan Ganguli
